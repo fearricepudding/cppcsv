@@ -1,12 +1,12 @@
-#ifndef CSVPARSER_H_INCLUDED
-#define CSVPARSER_H_INCLUDED
+#ifndef CSV_H_INCLUDED
+#define CSV_H_INCLUDED
 
 
-class CsvParser{
+class csv{
 public: 
-	CsvParser();
-	CsvParser(std::string filename);
-	~CsvParser();
+	csv();
+	csv(std::string filename);
+	~csv();
 	int setFilePath(std::string filepath);
 	std::string getFilePath();
 	std::string err;

@@ -5,21 +5,21 @@
 #include <string>
 #include "../include/CsvParser.h"
 
-CsvParser::~CsvParser(){};
-CsvParser::CsvParser(std::string newpath){
+csv::~csv(){};
+csv::csv(std::string newpath){
 	path = newpath;
 }
 
-std::string CsvParser::getFilePath(){
+std::string csv::getFilePath(){
 	return path;
 };
 
-int CsvParser::setFilePath(std::string newPath){
+int csv::setFilePath(std::string newPath){
 	path = newPath;
 	return true;
 };
 
-bool CsvParser::fileExists(std::string filepath){
+bool csv::fileExists(std::string filepath){
 	if (FILE *file = fopen(filepath.c_str(), "r")) {
         fclose(file);
         return true;
@@ -29,14 +29,14 @@ bool CsvParser::fileExists(std::string filepath){
     };
 };
 
-std::string CsvParser::stringify(Json::Value in){
+std::string csv::stringify(Json::Value in){
 	Json::StreamWriterBuilder builder;
     builder.settings_["indentation"] = "";
     std::string out = Json::writeString(builder, in);
 	return out;
 };
 
-Json::Value CsvParser::loadStatement(std::string name){
+Json::Value csv::loadStatement(std::string name){
 	if(name.length() <= 0){
 		return 1;
     };
@@ -44,7 +44,7 @@ Json::Value CsvParser::loadStatement(std::string name){
 	return statement;
 };
 
-Json::Value CsvParser::readFile(){
+Json::Value csv::readFile(){
 	std::ifstream infile(path);
 	std::string line;
 	Json::Value final;
@@ -68,7 +68,7 @@ Json::Value CsvParser::readFile(){
 	return final;
 };
 
-std::vector<std::string> CsvParser::split(std::string s, std::string delim){
+std::vector<std::string> csv::split(std::string s, std::string delim){
 	std::vector<std::string> results;
 	int currentPos = 0; 
 	int newpos;
